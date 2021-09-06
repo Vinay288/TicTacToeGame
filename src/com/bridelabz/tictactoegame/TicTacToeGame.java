@@ -52,6 +52,16 @@ public class TicTacToeGame {
 				board[i] = ' ';
 			}
 		}
+		for (int i = 1; i < 10; i++) {
+			if (freePositons[i] == 0) {
+				board[i] = playerKey;
+				if (gamePlayResult() == 1) {
+					board[i]=computerKey;
+					return;
+				}
+				board[i] = ' ';
+			}
+		}
 
 	}
 
