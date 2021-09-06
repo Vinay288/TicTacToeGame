@@ -1,15 +1,17 @@
 package com.bridelabz.tictactoegame;
 
 public class TicTacToeGame {
-	char[] ticTacToe;
+	char[] board;
+
 	public TicTacToeGame() {
-		ticTacToe=new char[11];
+		board = new char[10];
 		assignInitialvalues();
 	}
+
 	private void assignInitialvalues() {
-		for(int i=1;i<=10;i++) {
-			ticTacToe[i]=0;
+		for (int i = 1; i < 10; i++) {
+			board[i] = ' ';
 		}
 	}
-	
+
 }
