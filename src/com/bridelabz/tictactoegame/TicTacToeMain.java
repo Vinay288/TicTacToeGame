@@ -13,6 +13,7 @@ public class TicTacToeMain {
 		} else
 			computerKey = 'X';
 		TicTacToeGame game = new TicTacToeGame(playerKey, computerKey);
+		game.displayBoard();
 
 	}
 
