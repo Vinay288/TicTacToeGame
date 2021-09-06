@@ -11,15 +11,13 @@ public class TicTacToeGame {
 		this.playerKey = playerKey;
 		this.computerKey = computerKey;
 		board = new char[10];
-		assignInitialvalues();
-
 	}
 
 	public char getComputerKey() {
 		return this.computerKey;
 	}
 
-	private void assignInitialvalues() {
+	public void assignInitialvalues() {
 		for (int i = 1; i < 10; i++) {
 			board[i] = ' ';
 		}
