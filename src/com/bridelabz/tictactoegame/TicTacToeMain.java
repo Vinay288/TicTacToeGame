@@ -4,30 +4,52 @@ import java.util.Scanner;
 
 public class TicTacToeMain {
 	static Scanner scanner = new Scanner(System.in);
-	final static int HEADS=1;
-	final static int TAILS=0;
-	public static boolean gameOver=false;
+	final static int HEADS = 1;
+	final static int TAILS = 0;
+	public static boolean gameOver = false;
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Tic Tac Toe game");
 		char playerKey = selectKey();
-		char computerKey=(playerKey=='X')?'O':'X';
+		char computerKey = (playerKey == 'X') ? 'O' : 'X';
 		TicTacToeGame game = new TicTacToeGame(playerKey, computerKey);
 		int toss = (int) Math.round(Math.random());
-			while(!gameOver) {
-				game.displayBoard();
+		int play = 0;
+		if (toss == HEADS) {
 			userStart(game);
-			game.computerPlay(game);
-		game.gamePlayResult();
+			play = 1;
+		} else {
+			computerStart(game);
+			play = 0;
+		}
+		game.displayBoard();
+		while (!gameOver) {
+			if (play == 0) {
+				userStart(game);
+				game.displayBoard();
+				play = 1;
+			} else if (play == 1) {
+				game.computerPlay(game);
+				game.displayBoard();
+				play = 0;
 			}
+			game.gamePlayResult();
+		}
+		game.displayBoard();
+	}
+
+	private static void computerStart(TicTacToeGame game) {
+		game.board[5] = game.getComputerKey();
+		return;
 	}
 
 	public static void userStart(TicTacToeGame game) {
 		System.out.println("enter the user move index (1-9) ");
-		int userMove=scanner.nextInt();
-		if(!game.playerGamePlay(userMove))
+		int userMove = scanner.nextInt();
+		if (!game.playerGamePlay(userMove))
 			userStart(game);
 		return;
-		
+
 	}
 
 	public static char selectKey() {
