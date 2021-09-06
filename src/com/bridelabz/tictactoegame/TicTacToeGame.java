@@ -30,6 +30,13 @@ public class TicTacToeGame {
 	}
 
 	public boolean playerGamePlay(int userMove) {
-		return true;
+		if(board[userMove]==' ') {
+			board[userMove]=playerKey;
+			return true;
+		}
+		else {
+			System.out.println("this box is already filled select different box");
+		}
+		return false;
 	}
 }
