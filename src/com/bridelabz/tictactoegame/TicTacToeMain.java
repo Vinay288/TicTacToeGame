@@ -18,6 +18,7 @@ public class TicTacToeMain {
 		else
 			game.computerPlay(game);
 		game.gamePlayResult();
+		game.displayBoard();
 	}
 
 	public static void userStart(TicTacToeGame game) {
