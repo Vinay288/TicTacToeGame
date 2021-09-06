@@ -15,6 +15,10 @@ public class TicTacToeGame {
 
 	}
 
+	public char getComputerKey() {
+		return this.computerKey;
+	}
+
 	private void assignInitialvalues() {
 		for (int i = 1; i < 10; i++) {
 			board[i] = ' ';
@@ -32,8 +36,18 @@ public class TicTacToeGame {
 	}
 
 	public boolean playerGamePlay(int userMove) {
+		if (getFreePositions() == null) {
+			TicTacToeMain.gameOver = true;
+			System.out.println("game is a tie");
+			return true;
+		}
 		if (board[userMove] == ' ') {
 			board[userMove] = playerKey;
+			if (isWin(playerKey)) {
+				TicTacToeMain.gameOver = true;
+				System.out.println("you have won the game ,congratulations!!!!");
+			}
+			
 			return true;
 		}
 
@@ -42,11 +56,19 @@ public class TicTacToeGame {
 	}
 
 	public void computerPlay(TicTacToeGame game) {
+		System.out.println("Computer's turn");
 		int[] freePositons = getFreePositions();
+		if (getFreePositions() == null) {
+			TicTacToeMain.gameOver = true;
+			System.out.println("game is a tie");
+			return;
+		}
 		for (int i = 1; i < 10; i++) {
 			if (freePositons[i] == 0) {
 				board[i] = computerKey;
 				if (gamePlayResult() == 2) {
+					TicTacToeMain.gameOver = true;
+					System.out.println("computer has won the game");
 					return;
 				}
 				board[i] = ' ';
@@ -84,16 +106,14 @@ public class TicTacToeGame {
 
 	public int gamePlayResult() {
 		if (isWin(playerKey)) {
-			System.out.println("player1 has won the game");
 			return 1;
 		} else if (isWin(computerKey)) {
-			System.out.println("computer has wont the game");
 			return 2;
 		} else if (getFreePositions() == null) {
-			System.out.println("game has tied");
+			System.out.println("game is tie");
+			TicTacToeMain.gameOver = true;
 			return 0;
 		}
-		System.out.println("change the turn");
 		return -1;
 	}
 
@@ -104,8 +124,13 @@ public class TicTacToeGame {
 			return true;
 		for (int i = 1; i < 10;) {
 			if (board[i] != key) {
+				if (i % 3 == 0) {
+					i = i - 2;
+				} else if (i % 3 == 2) {
+					i = i - 1;
+				}
 				i += 3;
-				break;
+				continue;
 			}
 			if (i % 3 == 0)
 				return true;
