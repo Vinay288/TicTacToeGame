@@ -56,10 +56,16 @@ public class TicTacToeGame {
 			if (freePositons[i] == 0) {
 				board[i] = playerKey;
 				if (gamePlayResult() == 1) {
-					board[i]=computerKey;
+					board[i] = computerKey;
 					return;
 				}
 				board[i] = ' ';
+			}
+		}
+		for (int i = 1; i < 10; i++) {
+			if (freePositons[i] == 0 && (i == 1 || i == 3 || i == 7 || i == 9)) {
+				board[i] = computerKey;
+				return;
 			}
 		}
 
