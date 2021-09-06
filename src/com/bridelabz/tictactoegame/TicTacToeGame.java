@@ -15,7 +15,7 @@ public class TicTacToeGame {
 
 	private void assignInitialvalues() {
 		for (int i = 1; i < 10; i++) {
-			board[i] = 'A';
+			board[i] = ' ';
 		}
 	}
 
@@ -27,5 +27,9 @@ public class TicTacToeGame {
 				System.out.print("\n------\n");
 			}
 		}
+	}
+
+	public boolean playerGamePlay(int userMove) {
+		return true;
 	}
 }
