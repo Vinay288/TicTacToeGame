@@ -39,4 +39,9 @@ public class TicTacToeGame {
 		}
 		return false;
 	}
+
+	public void computerPlay(TicTacToeGame game) {
+	
+		
+	}
 }
