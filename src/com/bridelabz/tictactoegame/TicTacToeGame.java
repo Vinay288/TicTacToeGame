@@ -10,12 +10,20 @@ public class TicTacToeGame {
 		this.computerKey = computerKey;
 		board = new char[10];
 		assignInitialvalues();
+
 	}
 
 	private void assignInitialvalues() {
 		for (int i = 1; i < 10; i++) {
 			board[i] = ' ';
 		}
+	}
+
+	public void displayBoard() {
+		for (char i : board) {
+			System.out.println(i);
+		}
+
 	}
 
 }
