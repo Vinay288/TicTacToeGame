@@ -10,14 +10,18 @@ public class TicTacToeMain {
 		char computerKey=(playerKey=='X')?'O':'X';
 		TicTacToeGame game = new TicTacToeGame(playerKey, computerKey);
 		game.displayBoard();
-		gameStart(game);
+		int toss = (int) Math.round(Math.random());
+		if(toss==1)
+			userStart(game);
+		else
+			game.computerPlay(game);
 	}
 
-	public static void gameStart(TicTacToeGame game) {
+	public static void userStart(TicTacToeGame game) {
 		System.out.println("enter the user move index (1-9) ");
 		int userMove=scanner.nextInt();
 		if(!game.playerGamePlay(userMove))
-			gameStart(game);
+			userStart(game);
 		
 	}
 
