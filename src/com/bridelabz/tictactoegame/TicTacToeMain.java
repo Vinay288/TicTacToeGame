@@ -6,19 +6,19 @@ public class TicTacToeMain {
 	static Scanner scanner = new Scanner(System.in);
 	final static int HEADS=1;
 	final static int TAILS=0;
+	public static boolean gameOver=false;
 	public static void main(String[] args) {
 		System.out.println("Welcome to Tic Tac Toe game");
 		char playerKey = selectKey();
 		char computerKey=(playerKey=='X')?'O':'X';
 		TicTacToeGame game = new TicTacToeGame(playerKey, computerKey);
-		game.displayBoard();
 		int toss = (int) Math.round(Math.random());
-		if(toss==HEADS)
+			while(!gameOver) {
+				game.displayBoard();
 			userStart(game);
-		else
 			game.computerPlay(game);
 		game.gamePlayResult();
-		game.displayBoard();
+			}
 	}
 
 	public static void userStart(TicTacToeGame game) {
